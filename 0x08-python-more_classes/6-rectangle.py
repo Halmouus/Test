@@ -5,7 +5,6 @@
 class Rectangle:
     """class for the Rectangle object"""
 
-    """Number of instances"""
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
@@ -24,7 +23,7 @@ class Rectangle:
                 self.__height = height
         else:
             raise TypeError("height must be an integer")
-        self.number_of_instances += 1
+        Rectangle.number_of_instances += 1
 
     def area(self):
         """returns the current rectangle area"""
@@ -49,7 +48,7 @@ class Rectangle:
 
     def __del__(self):
         """Prints a message when a rectangle is deleted"""
-        self.number_of_instances -= 1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle... ")
 
     @property
