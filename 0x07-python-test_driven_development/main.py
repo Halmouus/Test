@@ -1,10 +1,5 @@
 #!/usr/bin/python3
-say_my_name = __import__('3-say_my_name').say_my_name
+max_integer = __import__('6-max_integer').max_integer
 
-say_my_name("John", "Smith")
-say_my_name("Walter", "White")
-s   ("Bob")
-try:
-    say_my_name(12, "White")
-except Exception as e:
-    print(e)
+print(max_integer([5.1, 6.4]))
+print(max_integer([1, 3, 4, 2]))
