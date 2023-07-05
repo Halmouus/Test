@@ -1,0 +1,66 @@
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+>>> matrix = [ [], [], [] ]
+>>> matrix_divided(matrix, 2)
+[[], [], []]
+>>> matrix_divided(matrix)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+>>> matrix = []
+>>> matrix_divided(matrix, 2)
+[]
+>>> matrix = [
+...     [1, 2, 3, 5],
+...     [4, 0, 6, 12]
+... ]
+>>> print(matrix_divided(matrix, 3))
+[[0.33, 0.67, 1.0, 1.67], [1.33, 0.0, 2.0, 4.0]]
+>>> print(matrix)
+[[1, 2, 3, 5], [4, 0, 6, 12]]
+>>> matrix = [
+...     [1, 2, 3, 5, 3],
+...     [4, 0, 6, 12]
+... ]
+>>> matrix = [
+...     [1, 2, 3, 5, 3],
+...     [4, 0, 6, 12]
+... ]
+>>> print(matrix_divided(matrix, 3))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/workspaces/Test/0x07-python-test_driven_development/2-matrix_divided.py", line 41, in matrix_divided
+    raise TypeError("Each row of the matrix must have the same size")
+TypeError: Each row of the matrix must have the same size
+>>> matrix = [
+...     [1, 2, 3, 5],
+...     [4, 'str', 6, 12]
+... ]
+>>> print(matrix_divided(matrix, 3))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/workspaces/Test/0x07-python-test_driven_development/2-matrix_divided.py", line 35, in matrix_divided
+    raise TypeError("matrix must be a matrix (list of lists)\
+TypeError: matrix must be a matrix (list of lists)                         of integers/floats
+>>> matrix = 5
+>>> print(matrix_divided(matrix, 3))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/workspaces/Test/0x07-python-test_driven_development/2-matrix_divided.py", line 27, in matrix_divided
+    raise TypeError("matrix must be a matrix (list of lists)\
+TypeError: matrix must be a matrix (list of lists)                         of integers/floats
+>>> matrix = [
+...     [1, 2, 3, 5],
+...     [4, 18, 6, 12]
+... ]
+>>> print(matrix_divided(matrix, 'str'))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/workspaces/Test/0x07-python-test_driven_development/2-matrix_divided.py", line 43, in matrix_divided
+    raise TypeError("div must be a number")
+TypeError: div must be a number
+>>> print(matrix_divided(matrix, 0))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/workspaces/Test/0x07-python-test_driven_development/2-matrix_divided.py", line 45, in matrix_divided
+    raise ZeroDivisionError("division by zero")
+ZeroDivisionError: division by zero
