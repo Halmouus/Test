@@ -28,7 +28,17 @@ class TestMaxInteger(unittest.TestCase):
         result = max_integer([5])
         self.assertEqual(result, 5)
 
-    def test_output_positives(self):
+    def test_ordered(self):
+        """Test the output for a list of positive integers"""
+        result = max_integer([0, 5, 8, 12])
+        self.assertEqual(result, 12)
+
+    def test_reversed(self):
+        """Test the output for a list of positive integers"""
+        result = max_integer([12, 8, 5, 0])
+        self.assertEqual(result, 12)
+
+    def test_output_random(self):
         """Test the output for a list of positive integers"""
         result = max_integer([5, 0, 12, 8])
         self.assertEqual(result, 12)
@@ -42,6 +52,16 @@ class TestMaxInteger(unittest.TestCase):
         """Test the output for a list of negative integers"""
         result = max_integer([-5, 0, -12, -8])
         self.assertEqual(result, 0)
+
+    def test_strings(self):
+        """Test the output for a list of strings"""
+        result = max_integer(["hey", "hello", "bonjour", "bye"])
+        self.assertEqual(result, "hey")
+
+    def test_single_string(self):
+        """Test the output for a list of negative integers"""
+        result = max_integer("Hello word!")
+        self.assertEqual(result, "w")
 
 
 if __name__ == '__main__':
