@@ -1,0 +1,98 @@
+=======================================
+CASE TESTS FOR 101-lazy-matrix_mult.py 
+=======================================
+
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+>>> print(lazy_matrix_mul(14, -4))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: Scalar operands are not allowed, use '*' instead
+>>> print(lazy_matrix_mul("Matrix1", "Matrix2"))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: Scalar operands are not allowed, use '*' instead
+>>> print(lazy_matrix_mul([[14, -4]], [5, 3]))
+[58]
+>>> print(lazy_matrix_mul([14, -4], [5, 3]))
+58
+>>> print(lazy_matrix_mul([[2, 3]],[]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: shapes (1,2) and (0,) not aligned: 2 (dim 1) != 0 (dim 0)
+>>> print(lazy_matrix_mul([],[]))
+0.0
+>>> print(lazy_matrix_mul([[2, 3]],[[]]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: shapes (1,2) and (1,0) not aligned: 2 (dim 1) != 1 (dim 0)
+>>> print(lazy_matrix_mul([[]],[[]]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: shapes (1,0) and (1,0) not aligned: 0 (dim 1) != 1 (dim 0)
+>>> print(lazy_matrix_mul([[2, 1]], [['str', 18, '1bc6']]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: shapes (1,2) and (1,3) not aligned: 2 (dim 1) != 1 (dim 0)
+>>> print(lazy_matrix_mul([['str', 18, '1bc6']], [[2, 1]]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: shapes (1,3) and (1,2) not aligned: 3 (dim 1) != 1 (dim 0)
+>>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4, -7.5]]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: setting an array element with a sequence.
+>>> print(lazy_matrix_mul([[1, 2], [3, 4, -2]], [[1, 2], [3, 4, -7.5]]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: setting an array element with a sequence.
+>>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2, 5], [3, 4, -7.5], [1, 12, -7]]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: shapes (2,2) and (3,3) not aligned: 2 (dim 1) != 3 (dim 0)
+>>> print(lazy_matrix_mul([[1, 2, 4.2], [3, 4, 0]], [[1, 2], [3, 4]]))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/101-lazy_matrix_mul.py", line 13, in lazy_matrix_mul
+    return np.matmul(m_a, m_b)
+ValueError: shapes (2,3) and (2,2) not aligned: 3 (dim 1) != 2 (dim 0)
+>>> print(lazy_matrix_mul([[0, 0]], [[0, 0], [0, 0]]))
+[[0 0]]
+>>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+[[ 7 10]
+ [15 22]]
+>>> print(lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+[[13 16]]
+>>> print(lazy_matrix_mul([[11, 3], [7, 11]], [[8, 0, 1], [0, 3, 5]]))
+[[88  9 26]
+ [56 33 62]]
+>>> print(lazy_matrix_mul([[2, 1], [7, -1], [6, 3], [4, 8]], [[4, 1, 0, -2, 3], [9, -1, 6, 5, 2]]))
+[[ 17   1   6   1   8]
+ [ 19   8  -6 -19  19]
+ [ 51   3  18   3  24]
+ [ 88  -4  48  32  28]]
+>>> print(lazy_matrix_mul([[2, 1, 8, 2], [7, -1, 4, 0]], [[4, 1, 0], [9, -1, 6], [4, -10, 2], [8, 0, 0]]))
+[[ 65 -79  22]
+ [ 35 -32   2]]
+>>> print(lazy_matrix_mul([[2.23, 1.18], [-2.76, 15.0023]], [[-0.04, 1.65, 9.02], [2.075, 6.742, 4.6]]))
+[[ 2.3593    11.63506   25.5426   ]
+ [31.2401725 96.5915066 44.11538  ]]

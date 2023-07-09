@@ -1,0 +1,63 @@
+>>>print(matrix_mul(14, -4))
+m_a must be a list
+
+>>>print(matrix_mul('Matrix1', 'Matrix2'))
+m_a must be a list
+
+>>>print(matrix_mul([[14, -4]], [5, 3]))
+m_b must be a list of lists
+
+>>>print(matrix_mul([14, -4], [5, 3]))
+m_a must be a list of lists
+
+>>>print(matrix_mul([[2, 3]],[]))
+m_b can't be empty
+
+>>>print(matrix_mul([],[]))
+m_a can't be empty
+
+>>>print(matrix_mul([[2, 3]],[[]]))
+m_b can't be empty
+
+>>>print(matrix_mul([[]],[[]]))
+m_a can't be empty
+
+>>>print(matrix_mul([[2, 1]], [['str', 18, '1bc6']]))
+m_b should contain only integers or floats
+
+>>>print(matrix_mul([['str', 18, '1bc6']], [[2, 1]]))
+m_a should contain only integers or floats
+
+>>>print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4, -7.5]]))
+each row of m_b must be of the same size
+
+>>>print(matrix_mul([[1, 2], [3, 4, -2]], [[1, 2], [3, 4, -7.5]]))
+each row of m_a must be of the same size
+
+>>>print(matrix_mul([[1, 2], [3, 4]], [[1, 2, 5], [3, 4, -7.5], [1, 12, -7]]))
+m_a and m_b can't be multiplied
+
+>>>print(matrix_mul([[1, 2, 4.2], [3, 4, 0]], [[1, 2], [3, 4]]))
+m_a and m_b can't be multiplied
+
+>>>print(matrix_mul([[0, 0]], [[0, 0], [0, 0]]))
+[[0, 0]]
+
+>>>print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+[[7, 10], [15, 22]]
+
+>>>print(matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+[[13, 16]]
+
+>>>print(matrix_mul([[11, 3], [7, 11]], [[8, 0, 1], [0, 3, 5]]))
+[[88, 9, 26], [56, 33, 62]]
+
+>>>print(matrix_mul([[2, 1], [7, -1], [6, 3], [4, 8]], [[4, 1, 0, -2, 3], [9, -1, 6, 5, 2]]))
+[[17, 1, 6, 1, 8], [19, 8, -6, -19, 19], [51, 3, 18, 3, 24], [88, -4, 48, 32, 28]]
+
+>>>print(matrix_mul([[2, 1, 8, 2], [7, -1, 4, 0]], [[4, 1, 0], [9, -1, 6], [4, -10, 2], [8, 0, 0]]))
+[[65, -79, 22], [35, -32, 2]]
+
+>>>print(matrix_mul([[2.23, 1.18], [-2.76, 15.0023]], [[-0.04, 1.65, 9.02], [2.075, 6.742, 4.6]]))
+None[[2.3593, 11.63506, 25.5426], [31.2401725, 96.5915066, 44.115379999999995]]
+

@@ -1,5 +1,24 @@
 #!/usr/bin/python3
-max_integer = __import__('6-max_integer').max_integer
+lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
-print(max_integer([5.1, 6.4]))
-print(max_integer(["bozzo", "hey", "hello", "bonjour", "bye"]))
+print(lazy_matrix_mul(14, -4))
+print(lazy_matrix_mul("Matrix1", "Matrix2"))
+print(lazy_matrix_mul([[14, -4]], [5, 3]))
+print(lazy_matrix_mul([14, -4], [5, 3]))
+print(lazy_matrix_mul([[2, 3]],[]))
+print(lazy_matrix_mul([],[]))
+print(lazy_matrix_mul([[2, 3]],[[]]))
+print(lazy_matrix_mul([[]],[[]]))
+print(lazy_matrix_mul([[2, 1]], [['str', 18, '1bc6']]))
+print(lazy_matrix_mul([['str', 18, '1bc6']], [[2, 1]]))
+print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4, -7.5]]))
+print(lazy_matrix_mul([[1, 2], [3, 4, -2]], [[1, 2], [3, 4, -7.5]]))
+print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2, 5], [3, 4, -7.5], [1, 12, -7]]))
+print(lazy_matrix_mul([[1, 2, 4.2], [3, 4, 0]], [[1, 2], [3, 4]]))
+print(lazy_matrix_mul([[0, 0]], [[0, 0], [0, 0]]))
+print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+print(lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+print(lazy_matrix_mul([[11, 3], [7, 11]], [[8, 0, 1], [0, 3, 5]]))
+print(lazy_matrix_mul([[2, 1], [7, -1], [6, 3], [4, 8]], [[4, 1, 0, -2, 3], [9, -1, 6, 5, 2]]))
+print(lazy_matrix_mul([[2, 1, 8, 2], [7, -1, 4, 0]], [[4, 1, 0], [9, -1, 6], [4, -10, 2], [8, 0, 0]]))
+print(lazy_matrix_mul([[2.23, 1.18], [-2.76, 15.0023]], [[-0.04, 1.65, 9.02], [2.075, 6.742, 4.6]]))
