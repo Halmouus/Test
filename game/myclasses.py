@@ -9,12 +9,14 @@ class Monster():
     spawn = 0
     monsters = []
 
-    def __init__(self, name="Monster", level=1, XP=None):
+    def __init__(self, name="Monster", level=1, XP=None, resistance=0):
         Monster.spawn += 1
         self.__name = name + "#" + str(Monster.spawn)
         self.__level = level
         self.__life = 30 + (level - 1) * 20
-        self.__xp = level * random.randint(10, self.__life)
+        self.__xp = level * random.randint(self.__life // 2, self.__life)
+        self.__resistance = resistance + (5 * self.__level)
+        self.__steal = False
         self.__is_alive = True
         Monster.monsters.append(self)
         print(f"{self.__name} has just spawned!")
@@ -24,7 +26,9 @@ class Monster():
             return
         if enemy.is_alive() == True:
             print(f"{self.__name} attacks {enemy.get_name()}")
-            enemy.lose_life(self.__level * random.randint(11, 20))
+            damage = enemy.lose_life(self.__level * random.randint(11, 20))
+            if self.is_steal():
+                self.gain_life(damage // 2)
 
     def is_alive(self):
         return self.__is_alive
@@ -32,8 +36,14 @@ class Monster():
     def get_name(self):
         return self.__name
     
+    def get_restistance(self):
+        return self.__resistance
+    
     def lose_life(self, val):
         if self.is_alive() == True:
+            if self.__resistance > 99:
+                self.__resistance = 100
+            val = val * (100 - self.__resistance) // 100
             if val > self.__life:
                 val = self.__life
             print(f"{self.__name} lost {val} life points!")
@@ -41,9 +51,16 @@ class Monster():
             if self.__life == 0:
                 self.__is_alive = False
                 self.is_dead()
+            return val
     
+    def gain_life(self, val):
+        if self.is_alive() == True:
+            self.__life += val
+            print(f"{self.__name} gained {val} life points!")
+            return val
+        
     def info(self):
-        print(f"{self.__name}\nLP: {self.__life}\nLvl: {self.__level}")   
+        print(f"{self.__name}\nLP: {self.__life}\nLvl: {self.__level}\nRes : {self.__resistance}%")   
 
     def is_dead(self):
         Monster.spawn -= 1
@@ -52,6 +69,12 @@ class Monster():
     
     def get_xp(self):
         return self.__xp
+    
+    def set_steal(self):
+        self.__steal = True
+    
+    def is_steal(self):
+        return self.__steal
     
     def __str__(self):
         return self.__name
@@ -72,6 +95,8 @@ class Weapon():
         self.__damage = damage
         self.__wear = wear
         self.__isequipped = False
+        self.__steal = False
+        self.__coeff = 0
         self.__host = None
 
     def get_damage(self):
@@ -98,6 +123,16 @@ class Weapon():
     def set_host(self, val):
         self.__host = val
     
+    def is_steal(self, val):
+        self.__steal = True
+        self.__coeff = val
+        return self.__steal
+    
+    def get_coeff(self):
+        if self.__steal == True:
+            return self.__coeff
+        return 0
+    
     def __str__(self):
         return self.__name
 
@@ -111,6 +146,8 @@ class Weapon():
         #print(f"{self.__name} just disappeared!")
         pass
 
+class Dagger(Weapon):
+    pass
 
 class Hero():
 
@@ -140,6 +177,7 @@ class Hero():
         if self.is_alive() == True:
             self.__life += val
             print(f"{self.__name} gained {val} life points!")
+            return val
 
     def lose_life(self, val):
         if self.is_alive() == True:
@@ -149,10 +187,13 @@ class Hero():
             self.__life -= val
             if self.__life == 0:
                 self.is_dead()
+            return val
 
     def equip_weapon(self, weapon):
         if self.is_alive() == True:
-            if weapon.is_equipped() == False:
+            if weapon == None:
+                self.__weapon = None
+            elif weapon.is_equipped() == False:
                 self.__weapon = weapon
                 print(f"{self.__name} has now equipped a {str(weapon)}!")
                 weapon.equip_status(True)
@@ -167,7 +208,8 @@ class Hero():
             if self.__weapon is not None:
                 if self.__weapon.get_wear() > 0:
                     print(f"{self.__name} attacks {enemy.get_name()} with {self.__weapon.get_name()}")
-                    enemy.lose_life(self.__weapon.get_damage())
+                    damage = enemy.lose_life(self.__weapon.get_damage() * self.__level)
+                    self.gain_life(damage // 2)
                     if enemy.is_alive() == False:
                         self.gain_xp(enemy.get_xp())
                     self.__weapon.set_wear(-1)
@@ -193,7 +235,7 @@ class Hero():
 
     def level_up(self, val=1):
         self.__level += val
-        print(f"Congratulation! {self.__name} reached level {self.__level}!")
+        print(f"Congratulation! {self.__name} has reached level {self.__level}!")
 
     def gain_xp(self, val):
         self.__xp += val
@@ -224,4 +266,3 @@ class Hero():
             monster.info()
             print("---")
         print("----------------------------")
-
