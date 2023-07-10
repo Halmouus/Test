@@ -55,7 +55,7 @@ class Hero():
     def __del__(self):
         if self.__is_alive == False:
             Hero.hero_number -= 1
-            Hero.hero_collection.remove(self)
+            #Hero.hero_collection.remove(self)
             print(f"{self.__name} is dead!")
 
     @classmethod
