@@ -198,7 +198,7 @@ class Hero():
     def gain_xp(self, val):
         self.__xp += val
         print(f"{self.__name} gained {val} XP!")
-        if self.__xp % (self.__level * 100) > 1:
+        if self.__xp // (self.__level * 100) > 1:
             self.level_up()
     
     def get_xp(self):
