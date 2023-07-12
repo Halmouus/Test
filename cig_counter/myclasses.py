@@ -49,6 +49,9 @@ class Pack():
     def get_cost(self):
         return self.__initsize - self.__size
 
+    def write_sfile(self, smoker):
+        pass
+
     def __str__(self):
         smoked = self.__initsize - self.__size
         pack = ""
@@ -67,3 +70,6 @@ class Smoker():
         smoker_file = f"{name}.txt"
         with open(smoker_file, 'w') as s_file:
             s_file.write("Hey, smoker!")
+
+    def smoke(self, pack, num=1):
+        pack.smoke(num)
