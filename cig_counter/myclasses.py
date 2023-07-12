@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from datetime import datetime
 
 class Pack():
 
@@ -18,6 +19,9 @@ class Pack():
         self.__landed = 0
         self.__lost = 0
     
+    def get_timing(self):
+        return datetime.now().strftime('%d/%m/%y %H:%M:%S')
+    
     def get_cig_left(self):
         return self.__size
 
@@ -25,19 +29,22 @@ class Pack():
         self.__size -= num
         self.__cost += (self.__unitc * num)
         self.__smoked += num
-        return (self.__unitc * num)
+        timing = self.get_timing()
+        return [timing, (self.__unitc * num)]
 
     def land(self, num=1):
         self.__size -= num
         self.__cost += (self.__unitc * num)
         self.__landed += num
-        return (self.__unitc * num)
+        timing = self.get_timing()
+        return [timing, (self.__unitc * num)]
 
     def lose(self, num=1):
         self.__size -= num
         self.__cost += (self.__unitc * num)
         self.__lost += num
-        return (self.__unitc * num)
+        timing = self.get_timing()
+        return [timing, (self.__unitc * num)]
     
     def get_cost(self):
         return self.__initsize - self.__size
@@ -47,11 +54,16 @@ class Pack():
         pack = ""
         pack += f"Label : {self.__brand} \n"
         pack += f"Remaining cigarettes : {self.__size}\n"
-        pack += f"Cost of smoked cigarettes : {smoked * self.__unitc}"
+        pack += f"Cost of smoked cigarettes : {smoked * self.__unitc:.2f}"
         return pack
 
 class Cigarette(Pack):
     pass
 
 class Smoker():
-    pass
+    def __init__(self, name="Unnamed", age="Undefined"):
+        self.__name = name
+        self.__age = age
+        smoker_file = f"{name}.txt"
+        with open(smoker_file, 'w') as s_file:
+            s_file.write("Hey, smoker!")
