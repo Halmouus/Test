@@ -1,0 +1,59 @@
+VScode shortcuts:
+
+Ctrl + D : multiple selection
+Ctrl + shift + k : del line
+Ctrl + j : hide/show terminal
+Ctrl + shift + u/d : multiline selection
+Alt + shift + u/d : duplicate line
+Alt + up/down : replace line
+
+**********************************************************************
+G function:
+It appears that the nano text editor is not available in your environment. In that case, you can use a different text editor, such as vi or vim, to edit your ~/.bashrc file. Here's an example using the vi editor:
+
+Open a terminal.
+Run the following command to open your ~/.bashrc file in the vi editor:
+
+Copy code
+vi ~/.bashrc
+
+Press i to enter insert mode. Now you can make changes to the file.
+Scroll to the end of the file and add the following function:
+
+Copy code
+g() {
+    git add .
+    git commit -m "$1"
+    git push
+}
+
+Press Esc to exit insert mode.
+Type :wq and press Enter to save the changes and exit the editor.
+
+After these steps, the git_push function should be added to your ~/.bashrc file. To make the changes take effect, either open a new terminal window or run the following command in the current terminal:
+
+Copy code
+source ~/.bashrc
+Now you should be able to use the git_push function in your Bash shell.
+
+**********************************************************************
+Token:
+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
+https://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@github.com/Halmouus/Test
+**********************************************************************
+Remote VS env:
+
+curl -fsSL https://coder.com/install.sh | sh
+sudo systemctl enable --now coder OR coder server
+*********************************************************************
+Set Linux env on Windows:
+
+- Enable WSL and Virtual Machine on Windows features (reboot to apply modifications)
+- Install latest version of Ubuntu-22.04
+- Run this command on powershell: wsl --set-version Ubuntu-22.04 2
+- If it requires additional downloads, download and restart the command (check versions via wsl -l -v command
+- Type wsl to run ubuntu shell or open ubuntu directly
+- Type code . to open VS code on your Linux env
+- Install stuff - clone your git repos etc..
+- Run sudo apt-get update for missing updates
+- Run sudo apt-get install build-essential gdb for gcc compiler (check with gcc -v)
