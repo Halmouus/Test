@@ -1,45 +1,29 @@
 VScode shortcuts:
 
-Ctrl + D : multiple selection
+Ctrl + d : multiple selection
+Ctrl + l: select entire line
 Ctrl + shift + k : del line
 Ctrl + j : hide/show terminal
+Ctrl + b: hide/show explorer
 Ctrl + shift + u/d : multiline selection
 Alt + shift + u/d : duplicate line
 Alt + up/down : replace line
 
 **********************************************************************
-G function:
-It appears that the nano text editor is not available in your environment. In that case, you can use a different text editor, such as vi or vim, to edit your ~/.bashrc file. Here's an example using the vi editor:
+Custiom git:
 
-Open a terminal.
-Run the following command to open your ~/.bashrc file in the vi editor:
-
-Copy code
-vi ~/.bashrc
-
-Press i to enter insert mode. Now you can make changes to the file.
-Scroll to the end of the file and add the following function:
-
-Copy code
+1- code ~/.bashrc
+2- Scroll down the end
+3- Insert this code:
 g() {
     git add .
     git commit -m "$1"
     git push
 }
-
-Press Esc to exit insert mode.
-Type :wq and press Enter to save the changes and exit the editor.
-
-After these steps, the git_push function should be added to your ~/.bashrc file. To make the changes take effect, either open a new terminal window or run the following command in the current terminal:
-
-Copy code
-source ~/.bashrc
-Now you should be able to use the git_push function in your Bash shell.
+4- Enjoy the convenience
 
 **********************************************************************
-Token:
-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
-https://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@github.com/Halmouus/Test
+
 **********************************************************************
 Remote VS env:
 
