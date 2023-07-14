@@ -24,6 +24,13 @@ packRecord = """CREATE TABLE PACK (
 cursor.execute(smokerRecord)
 cursor.execute(packRecord)
 '''
-sql = "INSERT INTO PACK (BRAND, QUANT, PRICE) VALUES (%s, %s, %s)"
-val = ("Marlboro", "20", "39")
+#sql = "INSERT INTO PACK (BRAND, QUANT, PRICE) VALUES (%s, %s, %s)"
+#val = [("LM Blue", "20", "27"), ("Camel", "20", "38"), ("Winston", "20", "38"),]
+#deletion = "DELETE FROM PACK WHERE BRAND = 'MARLBORO'"
+#cursor.executemany(sql, val)
+selection = "SELECT BRAND FROM PACK WHERE PRICE = '38'"
+cursor.execute(selection)
+result = cursor.fetchall()
+print(result)
+#connection.commit()
 connection.close()
