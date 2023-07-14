@@ -11,6 +11,7 @@ connection = mysql.connector.connect(
 )
 cursor = connection.cursor()
 #cursor.execute("CREATE DATABASE tubun")
+'''
 smokerRecord = """CREATE TABLE SMOKER (
                    USERNAME VARCHAR(20) NOT NULL,
                    PASSWORD VARCHAR(50) NOT NULL,
@@ -23,4 +24,8 @@ packRecord = """CREATE TABLE PACK (
                    )"""
 cursor.execute(smokerRecord)
 cursor.execute(packRecord)
+'''
+sql = "INSERT INTO PACK (BRAND, QUANT, PRICE) VALUES (%s, %s, %s)"
+val = ("Marlboro", "20", "39")
+pri 
 connection.close()
