@@ -41,3 +41,10 @@ Set Linux env on Windows:
 - Install stuff - clone your git repos etc..
 - Run sudo apt-get update for missing updates
 - Run sudo apt-get install build-essential gdb for gcc compiler (check with gcc -v)
+*****************************************************
+SQL stuff (not complete):
+sudo service mysql status
+if not started:
+sudo service mysql start
+then sudo -s
+then mysql -u root -p

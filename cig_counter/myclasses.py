@@ -66,6 +66,8 @@ class Pack():
 class Cigarette(Pack):
     pass
 
+clas
+
 class Smoker():
     def __init__(self, name="Unnamed", age="Undefined"):
         self.__name = name

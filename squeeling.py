@@ -1,6 +1,5 @@
 import mysql.connector
 
-
 connection = mysql.connector.connect(
     host='localhost',
     user='debian-sys-maint',
@@ -27,5 +26,4 @@ cursor.execute(packRecord)
 '''
 sql = "INSERT INTO PACK (BRAND, QUANT, PRICE) VALUES (%s, %s, %s)"
 val = ("Marlboro", "20", "39")
-pri 
 connection.close()
