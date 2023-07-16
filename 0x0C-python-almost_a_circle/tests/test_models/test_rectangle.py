@@ -120,6 +120,47 @@ class RectangleTestCase(unittest.TestCase):
         self.assertEqual(disp, expected_disp)
         with self.assertRaises(TypeError):
             Rectangle(10, 5).display(3)
+    
+    def test_j_set_get_width(self):
+        rect = Rectangle(4, 2)
+        self.assertEqual(rect.width, 4)
+        rect.width = 10
+        self.assertEqual(rect.width, 10)
+        with self.assertRaises(TypeError):
+            rect.width = '6'
+        with self.assertRaises(ValueError):
+            rect.width = 0
+    
+    def test_k_set_get_height(self):
+        rect = Rectangle(4, 2)
+        self.assertEqual(rect.height, 2)
+        rect.height = 10
+        self.assertEqual(rect.height, 10)
+        with self.assertRaises(TypeError):
+            rect.height = '6'
+        with self.assertRaises(ValueError):
+            rect.height = 0
+    
+    def test_k_set_get_x(self):
+        rect = Rectangle(4, 2, 0, 0)
+        self.assertEqual(rect.x, 0)
+        rect.x = 10
+        self.assertEqual(rect.x, 10)
+        with self.assertRaises(TypeError):
+            rect.x = '12'
+        with self.assertRaises(ValueError):
+            rect.x = -3
+    
+    def test_l_set_get_y(self):
+        rect = Rectangle(4, 2, 0, 0)
+        self.assertEqual(rect.y, 0)
+        rect.y = 10
+        self.assertEqual(rect.y, 10)
+        with self.assertRaises(TypeError):
+            rect.y = '12'
+        with self.assertRaises(ValueError):
+            rect.y = -3
+    
             
 if __name__ == '__main__':
     unittest.main()
