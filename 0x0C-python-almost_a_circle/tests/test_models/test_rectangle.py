@@ -90,7 +90,15 @@ class RectangleTestCase(unittest.TestCase):
         self.assertFalse(type(Rectangle(10, 5)) == Base)
         self.assertTrue(isinstance(Rectangle(10, 5), Rectangle))
         self.assertTrue(isinstance(Rectangle(10, 5), Base))
-        
+    
+    def test_h_area(self):
+        """Test area public method of Rectangle"""
+        self.assertEqual(Rectangle(3, 2).area(), 6)
+        self.assertEqual(Rectangle(2, 10).area(), 20)
+        self.assertEqual(Rectangle(10, 5, 0, 0).area(), 50)
+        self.assertEqual(Rectangle(100, 50).area(), 5000)
+        with self.assertRaises(TypeError):
+            Rectangle(10, 5).area(3)
         
 if __name__ == '__main__':
     unittest.main()
