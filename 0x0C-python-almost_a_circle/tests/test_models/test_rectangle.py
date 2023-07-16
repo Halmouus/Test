@@ -4,7 +4,8 @@
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
-
+from unittest.mock import patch
+import io
 
 class RectangleTestCase(unittest.TestCase):
     """Test class for Rectangle class"""
@@ -99,6 +100,26 @@ class RectangleTestCase(unittest.TestCase):
         self.assertEqual(Rectangle(100, 50).area(), 5000)
         with self.assertRaises(TypeError):
             Rectangle(10, 5).area(3)
-        
+    
+    def test_i_display(self):
+        """Test display method of Rectangle"""
+        with patch('sys.stdout', new=io.StringIO()) as my_stdout:
+            Rectangle(5,3).display()
+            disp = my_stdout.getvalue().strip()
+        expected_disp = '#####\n#####\n#####'
+        self.assertEqual(disp, expected_disp)
+        with patch('sys.stdout', new=io.StringIO()) as my_stdout:
+            Rectangle(1,1).display()
+            disp = my_stdout.getvalue().strip()
+        expected_disp = '#'
+        self.assertEqual(disp, expected_disp)
+        with patch('sys.stdout', new=io.StringIO()) as my_stdout:
+            Rectangle(4,4).display()
+            disp = my_stdout.getvalue().strip()
+        expected_disp = '####\n####\n####\n####'
+        self.assertEqual(disp, expected_disp)
+        with self.assertRaises(TypeError):
+            Rectangle(10, 5).display(3)
+            
 if __name__ == '__main__':
     unittest.main()
