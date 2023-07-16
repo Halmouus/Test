@@ -4,17 +4,11 @@ from base import Base
 
 if __name__ == "__main__":
 
-    b1 = Base(1)
-    print(b1.id)
-
-    b2 = Base(2)
-    print(b2.id)
-
-    b3 = Base(3)
-    print(b3.id)
-
-    b4 = Base(3)
-    print(b4.id)
-
-    b5 = Base()
-    print(b5.id)
+    print(Base().id)
+    print(Base().id)
+    print(Base(5).id)
+    print(Base().id)
+    print(Base().id)
+    print(Base().id)
+    print(Base().id)
+    print(Base().id)
