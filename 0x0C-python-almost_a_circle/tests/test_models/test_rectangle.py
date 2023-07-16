@@ -3,6 +3,7 @@
 """
 import unittest
 from models.rectangle import Rectangle
+from models.base import Base
 
 
 class RectangleTestCase(unittest.TestCase):
@@ -77,12 +78,18 @@ class RectangleTestCase(unittest.TestCase):
         self.assertEqual(Rectangle(5, 10, 0, 4).id, 10)
         
     def test_f_type(self):
-        """Test y value validation"""
+        """Test type of Rectangle"""
         self.assertEqual(str(type(Rectangle(10, 5))), "<class 'models.rectangle.Rectangle'>")
         self.assertEqual(Rectangle(10, 5).__dict__,
         {'_Rectangle__width': 10, '_Rectangle__height': 5,
          '_Rectangle__x': 0, '_Rectangle__y': 0, 'id': 13}) 
-        
+    
+    def test_g_type(self):
+        "Test type and isinstance"
+        self.assertTrue(type(Rectangle(10, 5)) == Rectangle)
+        self.assertFalse(type(Rectangle(10, 5)) == Base)
+        self.assertTrue(isinstance(Rectangle(10, 5), Rectangle))
+        self.assertTrue(isinstance(Rectangle(10, 5), Base))
         
         
 if __name__ == '__main__':
