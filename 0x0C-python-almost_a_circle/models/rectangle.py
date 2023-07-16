@@ -7,7 +7,6 @@ class Rectangle(Base):
     """class for the Rectangle object"""
     def __init__(self, width, height, x=0, y=0, id=None):
         """Instantiation with id, width, height, x and y"""
-        super().__init__(id)
         if not isinstance(width, int):
             raise TypeError("width must be an integer")
         if width <= 0:
@@ -28,6 +27,7 @@ class Rectangle(Base):
         if y < 0:
             raise ValueError("y must be >= 0")
         self.__y = y
+        super().__init__(id)
 
     @property
     def width(self):

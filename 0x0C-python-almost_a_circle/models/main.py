@@ -12,3 +12,5 @@ if __name__ == "__main__":
     print(Base().id)
     print(Base().id)
     print(Base().id)
+    print(type(Base()))
+    print(Base().__nb_objects)
