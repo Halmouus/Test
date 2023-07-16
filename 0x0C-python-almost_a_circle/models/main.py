@@ -1,16 +1,11 @@
 #!/usr/bin/python3
-""" 0-main """
-from base import Base
+""" 5-main """
+from models.rectangle import Rectangle
 
 if __name__ == "__main__":
 
-    print(Base().id)
-    print(Base().id)
-    print(Base(5).id)
-    print(Base().id)
-    print(Base().id)
-    print(Base().id)
-    print(Base().id)
-    print(Base().id)
-    print(type(Base()))
-    print(Base().__nb_objects)
+    r1 = Rectangle(4, 6, 2, 1, 12)
+    print(r1)
+
+    r2 = Rectangle(5, 5, 1)
+    print(r2)

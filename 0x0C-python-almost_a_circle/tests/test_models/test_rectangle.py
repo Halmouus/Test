@@ -122,6 +122,7 @@ class RectangleTestCase(unittest.TestCase):
             Rectangle(10, 5).display(3)
     
     def test_j_set_get_width(self):
+        "test width setters and getters"
         rect = Rectangle(4, 2)
         self.assertEqual(rect.width, 4)
         rect.width = 10
@@ -132,6 +133,7 @@ class RectangleTestCase(unittest.TestCase):
             rect.width = 0
     
     def test_k_set_get_height(self):
+        "test height setters and getters"
         rect = Rectangle(4, 2)
         self.assertEqual(rect.height, 2)
         rect.height = 10
@@ -142,6 +144,7 @@ class RectangleTestCase(unittest.TestCase):
             rect.height = 0
     
     def test_k_set_get_x(self):
+        "test x setters and getters"
         rect = Rectangle(4, 2, 0, 0)
         self.assertEqual(rect.x, 0)
         rect.x = 10
@@ -152,6 +155,7 @@ class RectangleTestCase(unittest.TestCase):
             rect.x = -3
     
     def test_l_set_get_y(self):
+        "test y setters and getters"
         rect = Rectangle(4, 2, 0, 0)
         self.assertEqual(rect.y, 0)
         rect.y = 10
@@ -160,6 +164,13 @@ class RectangleTestCase(unittest.TestCase):
             rect.y = '12'
         with self.assertRaises(ValueError):
             rect.y = -3
+    
+    def test_m_str(self):
+        "test string representation of Rectangle object"
+        r1 = Rectangle(4, 6, 2, 1, 100)
+        self.assertEqual(str(r1), "[Rectangle] (100) 2/1 - 4/6")
+        r2 = Rectangle(5, 10)
+        self.assertEqual(str(r2), "[Rectangle] (31) 0/0 - 5/10")
     
             
 if __name__ == '__main__':
