@@ -48,3 +48,5 @@ if not started:
 sudo service mysql start
 then sudo -s
 then mysql -u root -p
+*********************************************
+https://learn.microsoft.com/en-us/windows/wsl/install-manual
