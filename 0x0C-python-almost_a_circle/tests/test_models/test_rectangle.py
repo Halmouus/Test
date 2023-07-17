@@ -104,22 +104,27 @@ class RectangleTestCase(unittest.TestCase):
     def test_i_display(self):
         """Test display method of Rectangle"""
         with patch('sys.stdout', new=io.StringIO()) as my_stdout:
-            Rectangle(5,3).display()
-            disp = my_stdout.getvalue().strip()
-        expected_disp = '#####\n#####\n#####'
+            Rectangle(5, 3).display()
+            disp = my_stdout.getvalue()
+        expected_disp = '#####\n#####\n#####\n'
         self.assertEqual(disp, expected_disp)
         with patch('sys.stdout', new=io.StringIO()) as my_stdout:
-            Rectangle(1,1).display()
-            disp = my_stdout.getvalue().strip()
-        expected_disp = '#'
+            Rectangle(5, 3, 1, 0).display()
+            disp = my_stdout.getvalue()
+        expected_disp = ' #####\n #####\n #####\n'
         self.assertEqual(disp, expected_disp)
         with patch('sys.stdout', new=io.StringIO()) as my_stdout:
-            Rectangle(4,4).display()
-            disp = my_stdout.getvalue().strip()
-        expected_disp = '####\n####\n####\n####'
+            Rectangle(1, 1, 0, 1).display()
+            disp = my_stdout.getvalue()
+        expected_disp = '\n#\n'
+        self.assertEqual(disp, expected_disp)
+        with patch('sys.stdout', new=io.StringIO()) as my_stdout:
+            Rectangle(4, 4, 3, 2).display()
+            disp = my_stdout.getvalue()
+        expected_disp = '\n\n   ####\n   ####\n   ####\n   ####\n'
         self.assertEqual(disp, expected_disp)
         with self.assertRaises(TypeError):
-            Rectangle(10, 5).display(3)
+            Rectangle(10, 5, 1, 5).display(3)
     
     def test_j_set_get_width(self):
         "test width setters and getters"
@@ -170,7 +175,7 @@ class RectangleTestCase(unittest.TestCase):
         r1 = Rectangle(4, 6, 2, 1, 100)
         self.assertEqual(str(r1), "[Rectangle] (100) 2/1 - 4/6")
         r2 = Rectangle(5, 10)
-        self.assertEqual(str(r2), "[Rectangle] (31) 0/0 - 5/10")
+        self.assertEqual(str(r2), "[Rectangle] (32) 0/0 - 5/10")
     
             
 if __name__ == '__main__':

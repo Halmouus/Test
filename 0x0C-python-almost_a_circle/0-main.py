@@ -1,13 +1,18 @@
 #!/usr/bin/python3
-""" 5-main """
+""" 6-main """
 from models.rectangle import Rectangle
 
 if __name__ == "__main__":
+    
+    r = Rectangle(5, 3)
+    r.display()
 
-    r1 = Rectangle(4, 6, 2, 1, 12)
-    print(r1)
+    print("---")
 
-    r2 = Rectangle(5, 5, 1)
-    print(r2)
-    a = str(r2)
-    print(a)
+    r1 = Rectangle(5, 3, 1, 0)
+    r1.display()
+
+    print("---")
+
+    r2 = Rectangle(3, 2, 1, 0)
+    r2.display()
