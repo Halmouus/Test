@@ -85,7 +85,7 @@ for file in $(ls *.c | grep -v 'O.c' | grep -v 'print_array.c' | grep -v 'print_
 #include "sort.h"
 
 /**
- * ${name} - sorts an array of integers.
+ * ${name} - sorts a doubly linked list of integers.
  * @list: doubly-linked list of integers to sort
  */
 
