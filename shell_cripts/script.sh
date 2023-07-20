@@ -1,4 +1,5 @@
 #!/bin/bash
+# This basic script the boring part for you..
 
 # Just a basic prompt to avoid a mess..
 confirm_prompt() {
@@ -10,7 +11,6 @@ confirm_prompt() {
     esac
 }
 
-# Check if the current directory name is "sorting_algorithms"
 if [ "$(basename "$(pwd)")" != "sorting_algorithms" ]; then
     confirm_prompt
 fi
@@ -23,7 +23,7 @@ touch README.md sort.h print_array.c print_list.c 0-bubble_sort.c 0-O.c 1-insert
  deck.h
 echo "0x1B. C - Sorting algorithms & Big O" > README.md
 
-# Display number of successfully created files
+# Display number of successfully created files 
 c_files=$(ls *.c | wc -l)
 h_files=$(ls *.h | wc -l)
 readme_files=$(ls README.md | wc -l)
