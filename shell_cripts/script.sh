@@ -7,10 +7,9 @@ confirm_prompt() {
         read -r -n 1 -s -p "Current directory is not sorting_algorithms. Are you sure you want to run the script? (y/n): " answer
         case "$answer" in
             "" ) echo "" ;; 
-            #" " ) echo "" ;;
             [Yy] ) break ;;
-            [Nn] ) echo""; echo "script stopped"; exit ;;
-            * ) echo ""; echo "Please type 'y' to continue or 'n' to abort." ;;
+            [Nn] ) echo -e "\nscript stopped"; exit ;;
+            * ) echo -e "\nPlease type 'y' to continue or 'n' to abort." ;;
         esac
     done
 }
