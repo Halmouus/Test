@@ -1,15 +1,20 @@
 #!/bin/bash
-# This basic script the boring part for you..
+# This basic script that does the boring part for you..
 
 # Just a basic prompt to avoid a mess..
 confirm_prompt() {
-    read -p "Current directory is not sorting_algorithms. Are you sure you want to run the script? (y/n): " answer
-    case "$answer" in
-        [Yy]* ) ;;
-        [Nn]* ) echo "script stopped"; exit ;;
-        * ) echo "Please type 'y' to continue or 'n' to abort."; confirm_prompt ;;
-    esac
+    while true; do
+        read -r -n 1 -s -p "Current directory is not sorting_algorithms. Are you sure you want to run the script? (y/n): " answer
+        case "$answer" in
+            "" ) echo "" ;; 
+            #" " ) echo "" ;;
+            [Yy] ) break ;;
+            [Nn] ) echo""; echo "script stopped"; exit ;;
+            * ) echo ""; echo "Please type 'y' to continue or 'n' to abort." ;;
+        esac
+    done
 }
+
 
 if [ "$(basename "$(pwd)")" != "sorting_algorithms" ]; then
     confirm_prompt
