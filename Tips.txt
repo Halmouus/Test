@@ -49,4 +49,10 @@ sudo service mysql start
 then sudo -s
 then mysql -u root -p
 *********************************************
-https://learn.microsoft.com/en-us/windows/wsl/install-manual
+clone() {
+    local repo_name="$1"
+    local token="your token"
+    local clone_url="https://${token}@github.com/Halmouus/${repo_name}.git"
+
+    git clone "$clone_url"
+}
