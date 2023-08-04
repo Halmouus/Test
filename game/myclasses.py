@@ -90,6 +90,11 @@ class Monster():
 
 
 class Weapon():
+    
+    wp_number = 0
+    wp_collection = []
+    wp_names = []
+    
     def __init__(self, name, damage=0, wear=10):
         self.__name = name
         self.__damage = damage
@@ -98,6 +103,10 @@ class Weapon():
         self.__steal = False
         self.__coeff = 0
         self.__host = None
+        Weapon.wp_number += 1
+        Weapon.wp_collection.append(self)
+        Weapon.wp_names.append(name)
+        
 
     def get_damage(self):
         return self.__damage
@@ -147,7 +156,22 @@ class Weapon():
         pass
 
 class Dagger(Weapon):
-    pass
+    def __init__(self, name, damage=15, wear=20):
+        super().__init__(name, damage, wear)
+        self.__steal = True
+        self.__coeff = 50
+        
+class Hammer(Weapon):
+    def __init__(self, name, damage=30, wear=10):
+        super().__init__(name, damage, wear)
+        self.__steal = True
+        self.__coeff = 0
+        
+class Sword(Weapon):
+    def __init__(self, name, damage=20, wear=15):
+        super().__init__(name, damage, wear)
+        self.__steal = False
+        self.__coeff = 0
 
 class Hero():
 

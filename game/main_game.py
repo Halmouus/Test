@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import cmd
-from myclasses import Hero, Weapon, Monster
+from myclasses import *
 
 class MainMenu(cmd.Cmd):
     intro = '\n'.join(["Welcome to my mini RPG",
@@ -11,8 +11,7 @@ class MainMenu(cmd.Cmd):
     
     doc_header = '\n'.join(['Bro', 'The', 'Fuque!?'])
     undoc_header = "No help!"
-    
-    Heros = []
+    weapons = ['Dagger', 'Hammer', 'Sword']
     #def do_help(self, arg)
     #    return super().do_help(arg)
     
@@ -21,6 +20,8 @@ class MainMenu(cmd.Cmd):
             return self.do_EOF(line)
         if line.strip() in ["h", "help", "welp"]:
             return self.do_help(line)
+        #if line.startswith("stats") or line.startswith("info"):
+        #    return self.do_stats(line)
         return super().onecmd(line)
     
     def do_hero(self, name):
@@ -44,6 +45,8 @@ class MainMenu(cmd.Cmd):
         print ('\n'.join(['Displays a hero\'s stats',
                          'Usage stats <name>'
                          ]))
+    
+    def do_craft(self, name)
         
     def complete_hero_related_commands(self, text, line, begidx, endidx):
         if not text:
