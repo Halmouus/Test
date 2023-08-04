@@ -44,6 +44,15 @@ class MainMenu(cmd.Cmd):
         print ('\n'.join(['Displays a hero\'s stats',
                          'Usage stats <name>'
                          ]))
+        
+    def complete_hero_related_commands(self, text, line, begidx, endidx):
+        if not text:
+            completions = Hero.hero_names[:]
+        else:
+            completions = [name for name in Hero.hero_names if name.startswith(text)]
+        return completions
+    
+    complete_stats = complete_hero_related_commands
     
     def help_hero(self):
         print ('\n'.join(['Creates a Hero',
