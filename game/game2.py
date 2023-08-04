@@ -2,7 +2,7 @@
 from myclasses import Hero, Weapon, Monster, Dagger, GoldMine
 
 sword = Weapon("Sword", 5)
-hammer = Weapon("Hammer", 30)
+hammer = Weapon("Hammer", 40)
 hero1 = Hero("Hero 1")
 hero2 = Hero("Hero 2")
 hammer.is_steal(50)

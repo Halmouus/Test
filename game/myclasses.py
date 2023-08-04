@@ -153,6 +153,7 @@ class Hero():
 
     hero_number = 0
     hero_collection = []
+    hero_names = []
 
     def __init__(self, name=None):
         self.__name = name
@@ -164,6 +165,7 @@ class Hero():
         self.__is_alive = True
         Hero.hero_number += 1
         Hero.hero_collection.append(self)
+        Hero.hero_names.append(name)
         print(f"{self.__name} created succesfully!")
 
     def is_alive(self):
@@ -220,11 +222,11 @@ class Hero():
                 print(f"No weapons! {self.__name} cannot attack!")
         else:
             print(f"{enemy.get_name()} already dead!")
-
-    def get_name(self):
+    @property    
+    def name(self):
         return self.__name
-
-    def get_weapon(self):
+    @property
+    def weapon(self):
         return self.__weapon
 
     def is_dead(self):
@@ -242,8 +244,8 @@ class Hero():
         print(f"{self.__name} gained {val} XP!")
         if self.__xp // (self.__level * 100) > 1:
             self.level_up()
-    
-    def get_xp(self):
+    @property
+    def xp(self):
         return self.__xp
 
     def __str__(self):
