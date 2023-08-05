@@ -106,17 +106,30 @@ class Weapon():
         Weapon.wp_number += 1
         Weapon.wp_collection.append(self)
         Weapon.wp_names.append(name)
-        
+    
+    @classmethod
+    def exists(cls, name):
+        return(name in Weapon.wp_names)
+    
+    @classmethod
+    def correspond(cls, name):
+        for inst in Weapon.wp_collection:
+            if inst.name == name:
+                return inst
+        return None
 
-    def get_damage(self):
+    @property
+    def damage(self):
         return self.__damage
-
-    def get_wear(self):
+    
+    @property
+    def wear(self):
         return self.__wear
 
-    def get_name(self):
+    @property
+    def name(self):
         return self.__name
-
+    
     def set_wear(self, val):
         self.__wear += val
 
@@ -192,6 +205,17 @@ class Hero():
         Hero.hero_names.append(name)
         print(f"{self.__name} created succesfully!")
 
+    @classmethod
+    def correspond(cls, name):
+        for inst in Hero.hero_collection:
+            if inst.name == name:
+                return inst
+        return None
+    
+    @classmethod
+    def exists(cls, name):
+        return(name in Hero.hero_names)
+    
     def is_alive(self):
         return self.__is_alive
 
@@ -232,23 +256,25 @@ class Hero():
             return
         if enemy.is_alive() == True:
             if self.__weapon is not None:
-                if self.__weapon.get_wear() > 0:
-                    print(f"{self.__name} attacks {enemy.get_name()} with {self.__weapon.get_name()}")
+                if self.__weapon.wear > 0:
+                    print(f"{self.__name} attacks {enemy.name} with {self.__weapon.name}")
                     damage = enemy.lose_life(self.__weapon.get_damage() * self.__level)
                     self.gain_life(damage // 2)
                     if enemy.is_alive() == False:
                         self.gain_xp(enemy.get_xp())
                     self.__weapon.set_wear(-1)
-                if self.__weapon.get_wear() == 0:
+                if self.__weapon.wear == 0:
                     self.__weapon.destroy()
                     self.equip_weapon(None)
             else:
                 print(f"No weapons! {self.__name} cannot attack!")
         else:
-            print(f"{enemy.get_name()} already dead!")
+            print(f"{enemy.name} already dead!")
+   
     @property    
     def name(self):
         return self.__name
+   
     @property
     def weapon(self):
         return self.__weapon

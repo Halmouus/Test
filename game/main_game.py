@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import cmd
+import inspect
+import readline
 from myclasses import *
 
 class MainMenu(cmd.Cmd):
@@ -32,10 +34,9 @@ class MainMenu(cmd.Cmd):
             
     def do_stats(self, name):
         if name:
-            if name in Hero.hero_names:
-                for h in Hero.hero_collection:
-                    if h.name == name:
-                        h.info()
+            if Hero.exists(name):
+                instance = Hero.correspond(name)
+                instance.info()
             else:
                 print(f"{name} is not a hero")
         else:
@@ -46,8 +47,50 @@ class MainMenu(cmd.Cmd):
                          'Usage stats <name>'
                          ]))
     
-    def do_craft(self, name)
-        
+    def do_craft(self, line):
+        args = line.split()
+        if len(args) == 2:
+            name, label = args
+            if name in globals() and issubclass(globals()[name], Weapon):
+                weapon = globals()[name](label)
+                print(f"Crafted a {name} with label '{label}'")
+            else:
+                print(f"{name} must be a weapon. Type hcraft for more info")
+        else:
+            print('Usage craft <weapon_name> <weapon_label>')
+            
+    def complete_craft(self, text, line, begidx, endidx):
+        weapons = [name for name in dir() if inspect.isclass(globals().get(name, None)) and issubclass(globals()[name], Weapon)
+           and (globals()[name] != Weapon)]
+        completion = [weapon for weapon in self.weapons if weapon.startswith(text)]
+        return completion
+    
+    def do_equip(self, line):
+        args = line.split()
+        if len(args) == 2:
+            hero, wp = args
+            if not Hero.exists(hero):
+                print(f"{hero} in not a hero")
+            elif not Weapon.exists(wp):
+                print(f"{wp} in not a weapon")
+            else:
+                hero_instance = Hero.correspond(hero)
+                weapon = Weapon.correspond(wp)
+                hero_instance.equip_weapon(weapon)
+        else:
+            print("Usage: equip <hero> <weapon>")
+    
+    def complete_equip(self, text, line, begidx, endidx):
+        if not text:
+            return Hero.hero_names[:]
+        args = line.split()
+        if len(args) == 1:
+            return [name for name in Hero.hero_names if name.startswith(text)]
+        elif len(args) == 2:
+            hero = args[1]
+            if Hero.exists(hero):
+                return [name for name in Weapon.wp_names if name.startswith(text)]
+                
     def complete_hero_related_commands(self, text, line, begidx, endidx):
         if not text:
             completions = Hero.hero_names[:]
